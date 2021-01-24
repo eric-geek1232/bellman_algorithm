@@ -146,7 +146,7 @@ void Graph::printList(Node *edges)
 	cout<< "   ("<< edges->vertex<< ") -|- cost: "<< edges->cost;
 	
 	// KEEP ITERATING
-    printList(edges->next);
+    	printList(edges->next);
 }
 
 void Graph::startBellmanAlgo(char start, char end)
@@ -187,11 +187,11 @@ void Graph::setParents(Node *edges, int parent)
 		return setParents(adjacencyList[parent]->next, parent);	
 	}
     
-    // GET NEIGHBOR
-    int destine = CONVERT_CHAR_TO_INDEX(edges->vertex);
+    	// GET NEIGHBOR
+    	int destine = CONVERT_CHAR_TO_INDEX(edges->vertex);
     
-    // UPDATE NEIGHBORS
-    if(adjacencyList[parent]->cost + edges->cost < adjacencyList[destine]->cost){
+    	// UPDATE NEIGHBORS
+    	if (adjacencyList[parent]->cost + edges->cost < adjacencyList[destine]->cost) {
 		adjacencyList[destine]->cost = adjacencyList[parent]->cost + edges->cost;
 		parents[destine] = CONVERT_INT_TO_CHAR(parent);
 		isUpdated = true;
@@ -205,9 +205,9 @@ bool Graph::isCycleEdge(Node *edges, int parent)
 {
 	if (edges == NULL) return false;	
     
-    int destine = CONVERT_CHAR_TO_INDEX(edges->vertex);
+    	int destine = CONVERT_CHAR_TO_INDEX(edges->vertex);
     
-    if (adjacencyList[parent]->cost + edges->cost < adjacencyList[destine]->cost) return true;
+    	if (adjacencyList[parent]->cost + edges->cost < adjacencyList[destine]->cost) return true;
 }
 
 bool Graph::isEmpty() 
